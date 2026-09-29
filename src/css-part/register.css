@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap");
+
+.register {
+  --bg: #f3f4f1;
+  --card: #ffffff;
+  --ink: #1d2a40;
+  --muted: #5b6678;
+  --thread: #d99a1e;
+  --line: #d9dcd6;
+  --btn-bg: #1d2a40;
+  --btn-ink: #f3f4f1;
+
+  min-height: calc(100vh - 70px); /* leaves room for the navbar */
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  .register {
+    --bg: #141c2b;
+    --card: #1b2538;
+    --ink: #eef0ec;
+    --muted: #a3adbf;
+    --thread: #efb443;
+    --line: #2a3651;
+    --btn-bg: #efb443;
+    --btn-ink: #141c2b;
+  }
+}
+
+.register__card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem 2rem 2rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 24px 48px -28px rgba(29, 42, 64, 0.35);
+}
+
+/* the seam: a dashed stitch line just inside the card edge */
+.register__card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed var(--thread);
+  border-radius: 12px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.register__title {
+  margin: 0 0 0.4rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.register__sub {
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.register__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.register__field span {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.register__field input {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.98rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.register__field input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.register__field input:focus {
+  outline: none;
+  border-color: var(--thread);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--thread) 30%, transparent);
+}
+
+.register__btn {
+  margin-top: 0.4rem;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  font: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.register__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px -8px var(--ink);
+}
+
+.register__btn:active {
+  transform: translateY(0);
+}
+
+.register__btn:focus-visible,
+.register__alt a:focus-visible {
+  outline: 2px solid var(--thread);
+  outline-offset: 3px;
+}
+
+.register__alt {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.register__alt a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline dashed var(--thread);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+@media (max-width: 480px) {
+  .register__card {
+    padding: 2rem 1.4rem 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register * {
+    transition: none !important;
+  }
+}
