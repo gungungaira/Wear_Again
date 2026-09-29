@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Give Your Clothes a Second Life
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A MERN-stack platform for exchanging fashion instead of throwing it away. If you own a piece of clothing you no longer wear — a pair of pants you're bored of, a jacket that no longer fits — you can list it for other people to buy at a low price or claim for free. It's entirely up to the owner how much (if anything) to charge. The goal is to help people refresh their style while keeping clothes in circulation instead of in landfills.
 
-## Available Scripts
+## ✦ Why This Exists
 
-In the project directory, you can run:
+Fast fashion creates enormous textile waste — clothes worn a handful of times before being discarded. This platform makes it easy to pass clothing on to someone who'll actually wear it:
 
-### `npm start`
+- **For sellers** — clear out a wardrobe and earn a little money, or give items away for free.
+- **For buyers** — refresh their style affordably without buying new.
+- **For the environment** — every reused item is one less item manufactured, dyed, shipped, and eventually landfilled.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✦ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Authentication** — Register and log in with email and password, secured with JWT.
+- **Buyer Role** — Browse and claim listed clothing items, at whatever price the seller has set (including free).
+- **Seller Role** — List clothing items with a price of your choosing, or mark them as free.
+- **Inbox** — Message other users to arrange exchanges, ask questions about an item, or coordinate pickup/delivery.
+- **Profile** — Manage your account and view your own listings.
+- **Responsive, Minimal UI** — Clean, editorial-style design with a warm, sustainability-driven visual identity (navy, off-white, gold thread accents).
 
-### `npm test`
+## ✦ Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Login**
+![Login page](./screenshots/login.png)
 
-### `npm run build`
+**Register**
+![Register page](./screenshots/register.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Navbar**
+![Navbar with Buyer, Seller, Inbox, Profile links](./screenshots/navbar.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ✦ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Frontend:** React (Next.js or Create React App — update to match your setup)
+- **Backend:** Node.js, Express
+- **Database:** MongoDB with Mongoose
+- **Auth:** JWT (`jsonwebtoken`)
+- **Styling:** CSS
 
-### `npm run eject`
+## ✦ Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+client/
+├── src/
+│   ├── components/
+│   │   ├── Navbar/
+│   │   ├── Login/
+│   │   └── Register/
+│   ├── pages/
+│   │   ├── Buyer/
+│   │   ├── Seller/
+│   │   ├── Inbox/
+│   │   └── Profile/
+│   └── App.js
+server/
+├── controllers/
+│   ├── authController.js
+│   ├── itemController.js
+│   └── messageController.js
+├── models/
+│   ├── User.js
+│   ├── Item.js
+│   └── Message.js
+├── routes/
+│   ├── authRoutes.js
+│   ├── itemRoutes.js
+│   └── messageRoutes.js
+└── server.js
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ✦ Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node.js installed
+- A MongoDB database (local or MongoDB Atlas)
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone <your-repo-url>
+cd give-clothes-a-second-life
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# install backend dependencies
+cd server
+npm install
 
-### Code Splitting
+# install frontend dependencies
+cd ../client
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Environment Variables
 
-### Analyzing the Bundle Size
+Create a `.env` file in `server/`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
 
-### Making a Progressive Web App
+### Run the App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+# from server/
+npm run dev
 
-### Advanced Configuration
+# from client/, in a separate terminal
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## ✦ How It Works
 
-### Deployment
+1. **Register** — Create an account with name, email, and password.
+2. **Login** — Returns a JWT used to authenticate future requests.
+3. **List an Item (Seller)** — Upload photos and details of a clothing item, and set a price — or mark it free.
+4. **Browse (Buyer)** — Explore listed items from other users and claim the ones you want.
+5. **Inbox** — Message the seller to arrange price (if negotiable), pickup, or delivery.
+6. **Profile** — View and manage your account and listings.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## ✦ Roadmap
 
-### `npm run build` fails to minify
+- [ ] Item listing form with photo upload
+- [ ] Buyer browsing/search and filters (size, category, price range)
+- [ ] In-app messaging between buyer and seller
+- [ ] Favorites / saved items
+- [ ] Ratings or reviews for sellers
+- [ ] Location-based browsing for local exchanges (reduces shipping impact)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ✦ License
+
+This project is currently unlicensed. Add a license of your choice (e.g. MIT) before publishing.
